@@ -30,8 +30,8 @@ class LayoutApiItem extends AbstractModel implements ItemInterface
         CategoryFactory $categoryFactory,
         Page $pageHelper,
         Registry $registry,
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null,
+        ?AbstractResource $resource = null,
+        ?AbstractDb $resourceCollection = null,
         array $data = []
     ) {
         $this->productFactory = $productFactory;
@@ -80,7 +80,7 @@ class LayoutApiItem extends AbstractModel implements ItemInterface
     {
         return $this->getData(self::SORT_ORDER);
     }
-    
+
     /**
      * Set ID
      *
@@ -112,5 +112,5 @@ class LayoutApiItem extends AbstractModel implements ItemInterface
     public function setSortOrder($sortOrder)
     {
         return $this->setData(self::SORT_ORDER, $sortOrder);
-    }   
+    }
 }

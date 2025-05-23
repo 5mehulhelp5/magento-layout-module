@@ -50,7 +50,7 @@ class Grid extends Extended
         $collection = $this->getCustomCollection();
 
         $this->setCollection($collection);
-        
+
         return parent::_prepareCollection();
     }
 
@@ -67,7 +67,7 @@ class Grid extends Extended
                 'index'  => 'title'
             ]
         );
-        
+
         if ($dynamicField = $this->checkDynamicField()) {
             $this->addColumn(
                 'value',
@@ -108,10 +108,10 @@ class Grid extends Extended
     protected function checkDynamicField()
     {
         $collection = $this->getCustomCollection();
-        
+
         $fieldCode = false;
         foreach ($collection as $element) {
-            if (!is_null($element['show_in_grid'])) {                
+            if (!is_null($element['show_in_grid'])) {
                 $fieldCode = $element['attribute_code'];
             }
         }
@@ -136,13 +136,13 @@ class Grid extends Extended
                 ['eav.attribute_code']
             )
             ->where('group_id = ?', $this->getRequest()->getParam('entity_id'));
-        
+
         $secondInnerJoin = false;
         foreach ($collection->getData() as $element) {
-            if ($element['value'] == NULL) {
+            if ($element['value'] === null) {
                 $secondInnerJoin = true;
                 break;
-            } 
+            }
         }
 
         if ($secondInnerJoin) {
